@@ -260,14 +260,9 @@ The SDK is a singleton and supports one upgrade at a time. Upgrade devices seque
 
 ---
 
-## 9. Version history
-
-See [CHANGELOG.md](CHANGELOG.md).
-
 ---
 
-## 10. Support
+## 9. Support
 
 - Issues: please open an issue in this repository
-
 

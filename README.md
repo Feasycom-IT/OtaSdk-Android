@@ -22,11 +22,9 @@ Android 平台 OTA（固件升级）SDK 合集，适用于各系列蓝牙 / Wi-F
 ```
 OtaSdk-Android/
 ├── README.md                    本文件 / this index
-├── CHANGELOG.md                 仓库级变更 / repository-level changes
 └── ota-bt976/
     ├── README.md                SDK 文档（中文）
     ├── README.en.md             SDK documentation (English)
-    ├── CHANGELOG.md             SDK 变更记录 / SDK changelog
     └── aar/
         └── ota-bt976-1.0.1.aar  预编译 AAR / prebuilt AAR
 ```
