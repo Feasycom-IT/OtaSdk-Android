@@ -1,0 +1,21 @@
+# 构建产物
+build/
+.gradle/
+*.log
+*.apk
+*.hprof
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+Thumbs.db
+.DS_Store
+
+# 临时文件
+*.tmp
+*.bak
+*.orig
