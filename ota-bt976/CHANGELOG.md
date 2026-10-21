@@ -1,5 +1,14 @@
 # Changelog — ota-bt976
 
+## 1.0.1 — 2026-10-21
+
+- AAR 使用 R8 重新构建（混淆 + 裁剪），公开 API 保持不变
+  AAR rebuilt with R8 (obfuscation + shrinking); public API unchanged.
+- 内部实现类（`OtaBt976imp` 及其内部类）被重命名；`sdk` 包公开 API 与回调接口按内置 consumer 规则保留
+  Internal classes are renamed; the public `sdk` API and callback interfaces are kept by the bundled consumer rules.
+- `classes.jar` 由 32.4 KB 缩小至 27.4 KB
+  `classes.jar` shrinks from 32.4 KB to 27.4 KB.
+
 ## 1.0.0 — 2026-10-21
 
 首个公开版本。First public release.
