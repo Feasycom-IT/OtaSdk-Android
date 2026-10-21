@@ -2,7 +2,7 @@
 
 Android OTA (Over-The-Air / Firmware Upgrade) SDK collection for Feasycom Bluetooth / Wi-Fi modules.
 
-飞尚科技 Android 平台 OTA（固件升级）SDK 合集，适用于飞尚各系列蓝牙 / Wi-Fi 模组。
+Android 平台 OTA（固件升级）SDK 合集，适用于各系列蓝牙 / Wi-Fi 模组。
 
 ---
 
@@ -46,9 +46,6 @@ OtaSdk-Android/
 
 ## 问题反馈 / Issues
 
-请在本仓库提交 Issue，或联系飞尚技术支持。
-Please open an Issue in this repository, or contact Feasycom technical support.
+请在本仓库提交 Issue。
+Please open an Issue in this repository.
 
----
-
-© Feasycom. All rights reserved.

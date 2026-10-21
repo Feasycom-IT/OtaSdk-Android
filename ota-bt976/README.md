@@ -5,7 +5,7 @@ BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件
 - 版本 / Version：**1.0.1**
 - 适用模组 / Modules：BT976 系列（BLE）
 - 最低系统 / minSdk：API 24（Android 7.0）
-- 编译环境 / Build：JDK 11、Android Gradle Plugin 7.4+ / 8.x
+- 编译环境 / Build：JDK 11、Android Gradle Plugin 8.x
 
 ---
 
@@ -272,7 +272,6 @@ SDK 为单例，同一时刻只支持一个升级任务。多设备请串行执�
 
 ## 10. 技术支持
 
-- 官网：https://www.feasycom.com
 - 问题反馈：请在本仓库提交 Issue
 
-© Feasycom. All rights reserved.
+

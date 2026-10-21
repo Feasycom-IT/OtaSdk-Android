@@ -5,7 +5,7 @@ Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK wri
 - Version: **1.0.1**
 - Supported modules: BT976 series (BLE)
 - minSdk: 24 (Android 7.0)
-- Toolchain: JDK 11, Android Gradle Plugin 7.4+ / 8.x
+- Toolchain: JDK 11, Android Gradle Plugin 8.x
 
 ---
 
@@ -268,7 +268,6 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## 10. Support
 
-- Website: https://www.feasycom.com
 - Issues: please open an issue in this repository
 
-© Feasycom. All rights reserved.
+
