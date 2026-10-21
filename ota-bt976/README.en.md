@@ -2,7 +2,7 @@
 
 Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK writes a firmware image to the device over a BLE GATT connection; the device verifies the image (CRC / SHA-256) and boots into the new firmware.
 
-- Version: **1.0.0**
+- Version: **1.0.1**
 - Supported modules: BT976 series (BLE)
 - minSdk: 24 (Android 7.0)
 - Toolchain: JDK 11, Android Gradle Plugin 7.4+ / 8.x
@@ -25,12 +25,12 @@ Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK wri
 
 ### 2.1 Use the prebuilt AAR
 
-1. Copy `aar/ota-bt976-1.0.0.aar` into your app module's `libs/` directory
+1. Copy `aar/ota-bt976-1.0.1.aar` into your app module's `libs/` directory
 2. Add the dependency:
 
 ```gradle
 dependencies {
-    implementation files('libs/ota-bt976-1.0.0.aar')
+    implementation files('libs/ota-bt976-1.0.1.aar')
 }
 ```
 

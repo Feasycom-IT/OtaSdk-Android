@@ -2,7 +2,7 @@
 
 BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件文件分包写入设备，设备端完成 CRC / SHA-256 校验后自动跳转到新固件。
 
-- 版本 / Version：**1.0.0**
+- 版本 / Version：**1.0.1**
 - 适用模组 / Modules：BT976 系列（BLE）
 - 最低系统 / minSdk：API 24（Android 7.0）
 - 编译环境 / Build：JDK 11、Android Gradle Plugin 7.4+ / 8.x
@@ -25,7 +25,7 @@ BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件
 
 ### 2.1 使用预编译 AAR
 
-1. 将 `aar/ota-bt976-1.0.0.aar` 复制到 App 模块的 `libs/` 目录
+1. 将 `aar/ota-bt976-1.0.1.aar` 复制到 App 模块的 `libs/` 目录
 2. 在 `app/build.gradle` 中添加：
 
 ```gradle
@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation files('libs/ota-bt976-1.0.0.aar')
+    implementation files('libs/ota-bt976-1.0.1.aar')
 }
 ```
 
