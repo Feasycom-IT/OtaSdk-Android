@@ -2,8 +2,8 @@
 
 Core Bluetooth SDK. It wraps BLE / SPP scanning, connection management and characteristic read/write, adds Xmodem-based firmware upgrade over both BLE and SPP, and provides firmware parsing, CRC calculation and encryption helpers.
 
-- Version: **0.0.0.2**
-- minSdk: 29 (Android 10)
+- Version: **0.0.0.3**
+- minSdk: 28 (Android 9.0)
 - Toolchain: JDK 11, Android Gradle Plugin 8.x
 - Bundled native libs: `libFeasyBlueLibrary.so` (arm64-v8a, armeabi-v7a)
 
@@ -25,12 +25,12 @@ Core Bluetooth SDK. It wraps BLE / SPP scanning, connection management and chara
 
 ### 2.1 Add the AAR
 
-1. Copy `aar/fsc-core-0.0.0.2.aar` into your app module's `libs/` directory
+1. Copy `aar/fsc-core-0.0.0.3.aar` into your app module's `libs/` directory
 2. Add the dependency:
 
 ```gradle
 dependencies {
-    implementation files('libs/fsc-core-0.0.0.2.aar')
+    implementation files('libs/fsc-core-0.0.0.3.aar')
 }
 ```
 
