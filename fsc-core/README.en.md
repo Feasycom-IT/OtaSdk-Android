@@ -94,6 +94,16 @@ ota.startOta(bluetoothDevice, new XmodemOtacallback() {
 
 > Cancel with `ota.cancel();`
 
+**Choosing whether the device reboots into DFU**: `startOta` has a three-argument overload
+
+```java
+// resetAfterUpgrade = true  (default): send EnterDFU1
+// resetAfterUpgrade = false         : send EnterDFU0
+ota.startOta(bluetoothDevice, callback, false);
+```
+
+The two-argument form `startOta(bluetoothDevice, callback)` is equivalent to `resetAfterUpgrade = true` and keeps the legacy behaviour.
+
 ### 3.2 SPP firmware upgrade
 
 ```java
@@ -102,6 +112,7 @@ import com.feasycom.ota.XmodemSppOta;
 XmodemSppOta ota = XmodemSppOta.getInstance();
 ota.setOtaFile(new File("/sdcard/Download/firmware.bin"));
 ota.startOta(bluetoothDevice, new XmodemOtacallback() { /* same as above */ });
+// The three-argument overload is available as well: ota.startOta(bluetoothDevice, callback, false);
 ```
 
 ### 3.3 Managing the connection yourself
@@ -161,6 +172,7 @@ core.readBleCharacteristicValues(serviceUuid, charUuidList, readCallback);
 | `void sendBleValue(byte[] value, boolean writeNoResponse)` | Write a characteristic |
 | `void sendBleValue(byte[], boolean, BleManage.BleWriteCallback)` | Write with result callback |
 | `void readBleCharacteristicValues(UUID service, List<UUID> chars, BleManage.BleReadCallback)` | Read characteristics |
+| `boolean writeBleValueSync(byte[] value)` | Write a characteristic synchronously, returns whether the write was accepted |
 | `void Blerelease()` | Release BLE resources |
 
 ### 4.3 SPP
@@ -193,8 +205,8 @@ core.readBleCharacteristicValues(serviceUuid, charUuidList, readCallback);
 
 | Class | Key methods |
 | --- | --- |
-| `XmodemBleOta` | `getInstance()`, `setOtaFile(File)`, `startOta(BluetoothDevice, XmodemOtacallback)`, `cancel()` |
-| `XmodemSppOta` | `getInstance()`, `setOtaFile(File)`, `startOta(BluetoothDevice, XmodemOtacallback)` |
+| `XmodemBleOta` | `getInstance()`, `setOtaFile(File)`, `startOta(BluetoothDevice, XmodemOtacallback)`, `startOta(BluetoothDevice, XmodemOtacallback, boolean resetAfterUpgrade)`, `cancel()` |
+| `XmodemSppOta` | `getInstance()`, `setOtaFile(File)`, `startOta(BluetoothDevice, XmodemOtacallback)`, `startOta(BluetoothDevice, XmodemOtacallback, boolean resetAfterUpgrade)` |
 | `XmodemUtils` | constructor `XmodemUtils(byte[] data)`, `getData(byte)`, `setCompleteCallback`, `setProgressUpdateCallback`; `OTA_STATUS_*` constants |
 | `TeaCode` | `encryptBitstream(byte[])`, `decryptBitstream(byte[])`, `feasycomDecryption(byte[])`, `getDfuFileInformation(byte[])` (all native) |
 | `FileUtil` | `readFile(String)`, `readFileToByte(String)`, `readFileSize(String)`, `bytesToHex(...)`, `hexToByte(String)`, `getDfuFileInformation(byte[])`, `getModelName(String)`, `getAppVersion(String)`, `getBootLoaderVersion(String)`, `getFileAbsolutePath(Context, Uri)` |

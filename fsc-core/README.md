@@ -94,6 +94,16 @@ ota.startOta(bluetoothDevice, new XmodemOtacallback() {
 
 > 取消升级：`ota.cancel();`
 
+**控制升级后是否重启进入 DFU**：`startOta` 提供三参数重载
+
+```java
+// resetAfterUpgrade = true （默认）：发送 EnterDFU1
+// resetAfterUpgrade = false       ：发送 EnterDFU0
+ota.startOta(bluetoothDevice, callback, false);
+```
+
+两参数写法 `startOta(bluetoothDevice, callback)` 等价于 `resetAfterUpgrade = true`，保持历史行为。
+
 ### 3.2 SPP 固件升级
 
 ```java
@@ -102,6 +112,7 @@ import com.feasycom.ota.XmodemSppOta;
 XmodemSppOta ota = XmodemSppOta.getInstance();
 ota.setOtaFile(new File("/sdcard/Download/firmware.bin"));
 ota.startOta(bluetoothDevice, new XmodemOtacallback() { /* 同上 */ });
+// 同样支持三参数重载：ota.startOta(bluetoothDevice, callback, false);
 ```
 
 ### 3.3 自行管理连接
@@ -161,6 +172,7 @@ core.readBleCharacteristicValues(serviceUuid, charUuidList, readCallback);
 | `void sendBleValue(byte[] value, boolean writeNoResponse)` | 写特征值 |
 | `void sendBleValue(byte[], boolean, BleManage.BleWriteCallback)` | 写特征值（带结果回调） |
 | `void readBleCharacteristicValues(UUID service, List<UUID> chars, BleManage.BleReadCallback)` | 读特征值 |
+| `boolean writeBleValueSync(byte[] value)` | 同步写特征值，直接返回写入是否成功 |
 | `void Blerelease()` | 释放 BLE 资源 |
 
 ### 4.3 SPP 相关
@@ -193,8 +205,8 @@ core.readBleCharacteristicValues(serviceUuid, charUuidList, readCallback);
 
 | 类 | 主要方法 |
 | --- | --- |
-| `XmodemBleOta` | `getInstance()`、`setOtaFile(File)`、`startOta(BluetoothDevice, XmodemOtacallback)`、`cancel()` |
-| `XmodemSppOta` | `getInstance()`、`setOtaFile(File)`、`startOta(BluetoothDevice, XmodemOtacallback)` |
+| `XmodemBleOta` | `getInstance()`、`setOtaFile(File)`、`startOta(BluetoothDevice, XmodemOtacallback)`、`startOta(BluetoothDevice, XmodemOtacallback, boolean resetAfterUpgrade)`、`cancel()` |
+| `XmodemSppOta` | `getInstance()`、`setOtaFile(File)`、`startOta(BluetoothDevice, XmodemOtacallback)`、`startOta(BluetoothDevice, XmodemOtacallback, boolean resetAfterUpgrade)` |
 | `XmodemUtils` | 构造 `XmodemUtils(byte[] data)`、`getData(byte)`、`setCompleteCallback`、`setProgressUpdateCallback`；提供 `OTA_STATUS_*` 状态常量 |
 | `TeaCode` | `encryptBitstream(byte[])`、`decryptBitstream(byte[])`、`feasycomDecryption(byte[])`、`getDfuFileInformation(byte[])`（均为 native） |
 | `FileUtil` | `readFile(String)`、`readFileToByte(String)`、`readFileSize(String)`、`bytesToHex(...)`、`hexToByte(String)`、`getDfuFileInformation(byte[])`、`getModelName(String)`、`getAppVersion(String)`、`getBootLoaderVersion(String)`、`getFileAbsolutePath(Context, Uri)` 等 |
