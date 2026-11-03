@@ -2,7 +2,8 @@
 
 基础蓝牙能力 SDK。封装 BLE / SPP 的扫描、连接、特征值读写，并提供基于 Xmodem 协议的固件升级能力（BLE 通道与 SPP 通道），以及固件解析、CRC 校验、加密校验等工具类。
 
-- 版本 / Version：**0.0.0.4**
+- 版本 / Version：**0.0.0.5**
+- 依赖说明：0.0.0.5 起 AAR 已不再依赖内部 `Debug_Utils` 模块，单独引入本 AAR 即可使用，无需额外的 `debug-utils.aar`
 - 最低系统 / minSdk：API 28（Android 9.0）
 - 编译环境 / Build：JDK 11、Android Gradle Plugin 8.x
 - 内含原生库 / Native libs：`libFeasyBlueLibrary.so`（arm64-v8a、armeabi-v7a）
@@ -25,12 +26,12 @@
 
 ### 2.1 引入 AAR
 
-1. 将 `aar/fsc-core-0.0.0.4.aar` 复制到 App 模块的 `libs/` 目录
+1. 将 `aar/fsc-core-0.0.0.5.aar` 复制到 App 模块的 `libs/` 目录
 2. 在 `app/build.gradle` 中添加：
 
 ```gradle
 dependencies {
-    implementation files('libs/fsc-core-0.0.0.4.aar')
+    implementation files('libs/fsc-core-0.0.0.5.aar')
 }
 ```
 
