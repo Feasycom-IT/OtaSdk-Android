@@ -1,4 +1,4 @@
-# Feasycom BT1035 OTA SDK
+# BT1035 OTA SDK
 
 Firmware upgrade SDK for BT1035 modules using the Fmodem protocol, over SPP or BLE.
 

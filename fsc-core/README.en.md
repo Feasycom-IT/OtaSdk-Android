@@ -1,4 +1,4 @@
-# Feasycom Fsc Core SDK
+# Fsc Core SDK
 
 Core Bluetooth SDK. It wraps BLE / SPP scanning, connection management and characteristic read/write, adds Xmodem-based firmware upgrade over both BLE and SPP, and provides firmware parsing, CRC calculation and encryption helpers.
 

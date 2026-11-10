@@ -1,4 +1,4 @@
-# Feasycom BP106 SUOTA SDK
+# BP106 SUOTA SDK
 
 BP106 系列模组的 SUOTA（Software Update Over The Air）BLE 固件升级 SDK。
 

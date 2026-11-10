@@ -1,4 +1,4 @@
-# Feasycom BT2044GI OTA SDK
+# BT2044GI OTA SDK
 
 BLE firmware upgrade SDK for BT2044GI modules, with zip package extraction.
 

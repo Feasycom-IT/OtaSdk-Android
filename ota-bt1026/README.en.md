@@ -1,4 +1,4 @@
-# Feasycom BT1026 OTA SDK
+# BT1026 OTA SDK
 
 Firmware upgrade SDK for BT1026 modules using the UART DFU (VMU) protocol over SPP.
 

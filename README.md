@@ -1,4 +1,4 @@
-# Feasycom OTA SDK for Android
+# OTA SDK for Android
 
 Android OTA (Over-The-Air / Firmware Upgrade) SDK collection for Feasycom Bluetooth modules.
 

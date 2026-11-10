@@ -1,4 +1,4 @@
-# Feasycom BT1026 OTA SDK
+# BT1026 OTA SDK
 
 BT1026 系列模组的 UART DFU（VMU 协议）固件升级 SDK，通过 SPP 通道把固件分包写入设备。
 

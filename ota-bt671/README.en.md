@@ -1,4 +1,4 @@
-# Feasycom BT671 / BT3721Vx OTA SDK
+# BT671 / BT3721Vx OTA SDK
 
 BLE firmware upgrade SDK for BT671 and BT3721Vx modules (67x protocol).
 

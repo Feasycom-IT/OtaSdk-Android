@@ -1,4 +1,4 @@
-# Feasycom BT1035 OTA SDK
+# BT1035 OTA SDK
 
 BT1035 系列模组的 Fmodem 协议固件升级 SDK，同时支持 SPP 与 BLE 两种通道。
 

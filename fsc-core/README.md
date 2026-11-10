@@ -1,4 +1,4 @@
-# Feasycom Fsc Core SDK
+# Fsc Core SDK
 
 基础蓝牙能力 SDK。封装 BLE / SPP 的扫描、连接、特征值读写，并提供基于 Xmodem 协议的固件升级能力（BLE 通道与 SPP 通道），以及固件解析、CRC 校验、加密校验等工具类。
 

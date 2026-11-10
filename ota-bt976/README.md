@@ -1,4 +1,4 @@
-# Feasycom BT976 BLE OTA SDK
+# BT976 BLE OTA SDK
 
 BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件文件分包写入设备，设备端完成 CRC / SHA-256 校验后自动跳转到新固件。
 
@@ -214,7 +214,7 @@ ota.sendBleValue(data, true);
 
 ## 7. 节奏参数与调优
 
-SDK 内部使用以下保守参数（源码 `OtaBt976imp.java` 中的 `DELAY_*` 常量），在多数手机上稳定通过：
+SDK 内置以下保守参数（`DELAY_*` 常量），在多数手机上稳定通过：
 
 | 常量 | 默认值 | 含义 |
 | --- | --- | --- |

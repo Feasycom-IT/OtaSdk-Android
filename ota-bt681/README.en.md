@@ -1,4 +1,4 @@
-# Feasycom BT681 OTA SDK
+# BT681 OTA SDK
 
 BLE Mesh firmware upgrade SDK for BT681 (Airoha) modules.
 

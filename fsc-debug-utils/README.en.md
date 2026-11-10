@@ -1,6 +1,6 @@
-# Feasycom Debug Utils (FeasyLog remote diagnostics)
+# Debug Utils (FeasyLog remote diagnostics)
 
-Writes app logs to both Logcat and an on-device txt file, so users/colleagues can export or share it (e.g. via WeCom) without a USB cable.
+Writes app logs to both Logcat and an on-device txt file, so users can export or share it (e.g. via WeChat / WeCom) without a USB cable.
 
 - Version: **1.0.0**
 - minSdk: API 24 (Android 7.0)

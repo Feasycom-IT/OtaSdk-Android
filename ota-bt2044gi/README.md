@@ -1,4 +1,4 @@
-# Feasycom BT2044GI OTA SDK
+# BT2044GI OTA SDK
 
 BT2044GI 系列模组的 BLE 固件升级 SDK，支持 zip 固件包自动解压。
 

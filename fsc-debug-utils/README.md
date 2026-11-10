@@ -1,6 +1,6 @@
-# Feasycom Debug Utils（FeasyLog 远程排查日志）
+# Debug Utils（远程排查日志）
 
-把 App 运行日志同时写到 Logcat 和手机上的一个 txt 文件，用户/同事在页面点一下即可导出或分享（如企业微信），不用连电脑抓 Logcat。
+把 App 运行日志同时写到 Logcat 和手机上的一个 txt 文件，用户在页面点一下即可导出或分享（如微信、企业微信），不用连电脑抓 Logcat。
 
 - 版本 / Version：**1.0.0**
 - 最低系统 / minSdk：API 24（Android 7.0）

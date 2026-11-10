@@ -1,4 +1,4 @@
-# Feasycom BT671 / BT3721Vx OTA SDK
+# BT671 / BT3721Vx OTA SDK
 
 BT671、BT3721Vx 系列模组的 BLE 固件升级 SDK（67x 协议）。
 

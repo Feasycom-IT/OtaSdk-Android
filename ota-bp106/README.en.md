@@ -1,4 +1,4 @@
-# Feasycom BP106 SUOTA SDK
+# BP106 SUOTA SDK
 
 SUOTA (Software Update Over The Air) BLE firmware upgrade SDK for BP106 modules.
 

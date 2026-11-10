@@ -1,4 +1,4 @@
-# Feasycom BT976 BLE OTA SDK
+# BT976 BLE OTA SDK
 
 Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK writes a firmware image to the device over a BLE GATT connection; the device verifies the image (CRC / SHA-256) and boots into the new firmware.
 
@@ -210,7 +210,7 @@ Measured with a 105 KB image (420 packets / 27 sectors):
 
 ## 7. Pacing parameters
 
-The SDK ships with conservative defaults (`DELAY_*` constants in `OtaBt976imp.java`):
+The SDK ships with conservative defaults (`DELAY_*` constants):
 
 | Constant | Default | Meaning |
 | --- | --- | --- |
