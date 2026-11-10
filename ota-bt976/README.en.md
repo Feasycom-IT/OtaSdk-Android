@@ -26,11 +26,12 @@ Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK wri
 
 ### 2.1 Use the prebuilt AAR
 
-1. Copy `aar/ota-bt976-1.0.3.aar` into your app module's `libs/` directory
+1. Copy `aar/ota-bt976-1.0.3.aar` and `aar/fsc-debug-utils-1.0.0.aar` into your app module's `libs/` directory
 2. Add the dependency:
 
 ```gradle
 dependencies {
+    implementation files('libs/fsc-debug-utils-1.0.0.aar')
     implementation files('libs/ota-bt976-1.0.3.aar')
 }
 ```
@@ -40,6 +41,8 @@ dependencies {
 ### 2.2 Required permissions (AndroidManifest.xml)
 
 ```xml
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
 <!-- Android 12 (API 31) and above -->
 <uses-permission
     android:name="android.permission.BLUETOOTH_SCAN"
@@ -65,10 +68,13 @@ import com.feasycom.ota_976_lib.sdk.OtaCallBack;
 
 OtaBt976Api ota = Ota976Sdk.getInstance();
 
-// 1) Provide the firmware file (complete .bin image)
+// 1) Initialize: stores the Context; must be called before setOtaFile / StartOta
+ota.init(getApplicationContext());
+
+// 2) Provide the firmware file (complete .bin image)
 ota.setOtaFile(new File("/sdcard/Download/BT976_Update.bin"));
 
-// 2) Start the upgrade; newSdkVer = true selects the new upgrade flow
+// 3) Start the upgrade; newSdkVer = true selects the new upgrade flow
 ota.StartOta(bluetoothDevice, /* newSdkVer = */ true, new OtaCallBack() {
 
     @Override
@@ -97,6 +103,7 @@ Kotlin:
 
 ```kotlin
 val ota = Ota976Sdk.getInstance()
+ota.init(applicationContext)   // initialize first, then set the file / start
 ota.setOtaFile(File("/sdcard/Download/BT976_Update.bin"))
 ota.StartOta(device, true, object : OtaCallBack {
     override fun onSuccess() { /* success */ }

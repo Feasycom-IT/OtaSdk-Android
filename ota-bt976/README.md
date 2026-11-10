@@ -26,7 +26,7 @@ BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件
 
 ### 2.1 使用预编译 AAR
 
-1. 将 `aar/ota-bt976-1.0.3.aar` 复制到 App 模块的 `libs/` 目录
+1. 将 `aar/ota-bt976-1.0.3.aar` 和 `aar/fsc-debug-utils-1.0.0.aar` 一起复制到 App 模块的 `libs/` 目录
 2. 在 `app/build.gradle` 中添加：
 
 ```gradle
@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation files('libs/fsc-debug-utils-1.0.0.aar')
     implementation files('libs/ota-bt976-1.0.3.aar')
 }
 ```
@@ -44,6 +45,8 @@ dependencies {
 ### 2.2 所需权限（AndroidManifest.xml）
 
 ```xml
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
 <!-- Android 12 (API 31) 及以上 -->
 <uses-permission
     android:name="android.permission.BLUETOOTH_SCAN"
@@ -69,10 +72,13 @@ import com.feasycom.ota_976_lib.sdk.OtaCallBack;
 
 OtaBt976Api ota = Ota976Sdk.getInstance();
 
-// 1) 设置固件文件（完整升级镜像，.bin）
+// 1) 初始化：保存 Context，必须在 setOtaFile / StartOta 之前调用
+ota.init(getApplicationContext());
+
+// 2) 设置固件文件（完整升级镜像，.bin）
 ota.setOtaFile(new File("/sdcard/Download/BT976_Update.bin"));
 
-// 2) 开始升级：newSdkVer 为 true 表示使用新版本 SDK 升级流程
+// 3) 开始升级：newSdkVer 为 true 表示使用新版本 SDK 升级流程
 ota.StartOta(bluetoothDevice, /* newSdkVer = */ true, new OtaCallBack() {
 
     @Override
@@ -101,6 +107,7 @@ Kotlin：
 
 ```kotlin
 val ota = Ota976Sdk.getInstance()
+ota.init(applicationContext)   // 必须先初始化，再设置文件/开始升级
 ota.setOtaFile(File("/sdcard/Download/BT976_Update.bin"))
 ota.StartOta(device, true, object : OtaCallBack {
     override fun onSuccess() { /* 成功 */ }
