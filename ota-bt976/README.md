@@ -2,7 +2,7 @@
 
 BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件文件分包写入设备，设备端完成 CRC / SHA-256 校验后自动跳转到新固件。
 
-- 版本 / Version：**1.0.2**
+- 版本 / Version：**1.0.3**
 - 适用模组 / Modules：BT976 系列（BLE）
 - 最低系统 / minSdk：API 24（Android 7.0）
 - 依赖 AAR / Required AARs：`fsc-debug-utils-1.0.0.aar`（本 AAR 使用 FeasyLog 记录日志，需一并引入）
@@ -26,7 +26,7 @@ BT976 系列模组的蓝牙（BLE）固件升级 SDK。通过 BLE GATT 将固件
 
 ### 2.1 使用预编译 AAR
 
-1. 将 `aar/ota-bt976-1.0.2.aar` 复制到 App 模块的 `libs/` 目录
+1. 将 `aar/ota-bt976-1.0.3.aar` 复制到 App 模块的 `libs/` 目录
 2. 在 `app/build.gradle` 中添加：
 
 ```gradle
@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    implementation files('libs/ota-bt976-1.0.2.aar')
+    implementation files('libs/ota-bt976-1.0.3.aar')
 }
 ```
 
@@ -271,3 +271,12 @@ SDK 为单例，同一时刻只支持一个升级任务。多设备请串行执�
 
 - 问题反馈：请在本仓库提交 Issue
 
+---
+
+## 10. 更新记录
+
+| 版本 | 说明 |
+| --- | --- |
+| 1.0.3 | 修复升级成功后设备重启断连会把界面提示覆盖成"连接断开"的问题；成功后断连只记日志，不再触发 `onTips`/重连/失败逻辑 |
+| 1.0.2 | 重新接入 FeasyLog 日志，需同时引入 `fsc-debug-utils` |
+| 1.0.1 | 分包发送节奏优化、16KB 页对齐原生库 |

@@ -2,7 +2,7 @@
 
 Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK writes a firmware image to the device over a BLE GATT connection; the device verifies the image (CRC / SHA-256) and boots into the new firmware.
 
-- Version: **1.0.2**
+- Version: **1.0.3**
 - Supported modules: BT976 series (BLE)
 - minSdk: 24 (Android 7.0)
 - Required AARs: `fsc-debug-utils-1.0.0.aar` (this AAR logs through FeasyLog, so it must be added together)
@@ -26,12 +26,12 @@ Over-the-air (BLE) firmware upgrade SDK for the BT976 module family. The SDK wri
 
 ### 2.1 Use the prebuilt AAR
 
-1. Copy `aar/ota-bt976-1.0.2.aar` into your app module's `libs/` directory
+1. Copy `aar/ota-bt976-1.0.3.aar` into your app module's `libs/` directory
 2. Add the dependency:
 
 ```gradle
 dependencies {
-    implementation files('libs/ota-bt976-1.0.2.aar')
+    implementation files('libs/ota-bt976-1.0.3.aar')
 }
 ```
 
@@ -267,3 +267,12 @@ The SDK is a singleton and supports one upgrade at a time. Upgrade devices seque
 
 - Issues: please open an issue in this repository
 
+---
+
+## 10. Changelog
+
+| Version | Notes |
+| --- | --- |
+| 1.0.3 | Fixed: after a successful upgrade the device reboots and disconnects, which used to overwrite the "upgrade succeeded" UI with "disconnected"; post-success disconnects now only log, without `onTips` / reconnect / failure handling |
+| 1.0.2 | Re-integrated FeasyLog logging; `fsc-debug-utils` must be added together |
+| 1.0.1 | Tuned packet pacing; 16 KB page-aligned native libs |
