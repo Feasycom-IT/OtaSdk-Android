@@ -26,11 +26,12 @@ Core Bluetooth SDK. It wraps BLE / SPP scanning, connection management and chara
 
 ### 2.1 Add the AAR
 
-1. Copy `aar/fsc-core-0.0.0.6.aar` into your app module's `libs/` directory
+1. Copy `aar/fsc-core-0.0.0.6.aar` and `aar/fsc-debug-utils-1.0.0.aar` into your app module's `libs/` directory
 2. Add the dependency:
 
 ```gradle
 dependencies {
+    implementation files('libs/fsc-debug-utils-1.0.0.aar')
     implementation files('libs/fsc-core-0.0.0.6.aar')
 }
 ```
@@ -38,6 +39,8 @@ dependencies {
 ### 2.2 Required permissions (AndroidManifest.xml)
 
 ```xml
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
 <!-- Android 12 (API 31) and above -->
 <uses-permission
     android:name="android.permission.BLUETOOTH_SCAN"

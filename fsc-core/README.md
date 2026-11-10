@@ -26,11 +26,12 @@
 
 ### 2.1 引入 AAR
 
-1. 将 `aar/fsc-core-0.0.0.6.aar` 复制到 App 模块的 `libs/` 目录
+1. 将 `aar/fsc-core-0.0.0.6.aar` 和 `aar/fsc-debug-utils-1.0.0.aar` 一起复制到 App 模块的 `libs/` 目录
 2. 在 `app/build.gradle` 中添加：
 
 ```gradle
 dependencies {
+    implementation files('libs/fsc-debug-utils-1.0.0.aar')
     implementation files('libs/fsc-core-0.0.0.6.aar')
 }
 ```
@@ -38,6 +39,8 @@ dependencies {
 ### 2.2 所需权限（AndroidManifest.xml）
 
 ```xml
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
 <!-- Android 12 (API 31) 及以上 -->
 <uses-permission
     android:name="android.permission.BLUETOOTH_SCAN"
