@@ -2,7 +2,7 @@
 
 Firmware upgrade SDK for BT1026 modules using the UART DFU (VMU) protocol over SPP.
 
-- Version: **1.0.0**
+- Version: **1.0.1**
 - Modules: BT1026 series
 - Transport: SPP (Bluetooth Classic serial port)
 - minSdk: API 24 (Android 7.0)
@@ -13,24 +13,28 @@ Firmware upgrade SDK for BT1026 modules using the UART DFU (VMU) protocol over S
 ## 1. Features
 
 - **VMU protocol**: SYNC → START → DATA → VALIDATION → COMMIT
-- **Reconnect**: automatically reconnects and resumes after the device reboots
+- **Burst transfer**: streams continuously within the device's DATA_BYTES_REQ window - a 1.46 MB image takes about 3 minutes (the previous per-packet-ACK mode took about 12 minutes)
+- **ACK back-pressure**: pauses sending when the device stops acknowledging and resumes when it recovers, so the receive buffer is never overrun
+- **Automatic commit after reboot**: once all data is sent the device reboots and disconnects; the SDK reconnects and completes the transfer-complete/commit handshake
 - **Watchdog**: fails after 20 s without response
 - **Stage/progress callbacks**: `Stage` constants can drive the UI directly
 - **Error codes**: `OtaError` distinguishes file/connection/busy failures
 - **Bundled ProGuard rules**
 
+> **Note**: if the link drops during the data transfer, the SDK reports `onFailure` immediately instead of re-sending the whole image (as the previous version did). Power-cycle the device before retrying, otherwise it may stay in the upgrade error state.
+
 ---
 
 ## 2. Integration
 
-1. Copy `aar/ota-bt1026-1.0.0.aar`, `fsc-core-0.0.0.6.aar` and `fsc-debug-utils-1.0.0.aar` into `libs/`.
+1. Copy `aar/ota-bt1026-1.0.1.aar`, `fsc-core-0.0.0.6.aar` and `fsc-debug-utils-1.0.0.aar` into `libs/`.
 2. Add the dependencies:
 
 ```gradle
 dependencies {
     implementation files('libs/fsc-debug-utils-1.0.0.aar')
     implementation files('libs/fsc-core-0.0.0.6.aar')
-    implementation files('libs/ota-bt1026-1.0.0.aar')
+    implementation files('libs/ota-bt1026-1.0.1.aar')
 }
 ```
 
@@ -97,4 +101,5 @@ The AAR ships `consumer-rules.pro`; public classes and callback interfaces are k
 
 | Version | Notes |
 | --- | --- |
+| 1.0.1 | Burst transfer: 1.46 MB image goes from ~12 min to ~3 min; ACK back-pressure added; a mid-transfer link drop now fails fast instead of re-sending the whole image; abort/disconnect commands are sent on failure so the device does not stay in the error state |
 | 1.0.0 | First standalone release |

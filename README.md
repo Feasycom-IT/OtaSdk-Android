@@ -20,7 +20,7 @@ Android 平台 OTA（固件升级）SDK 合集，适用于各系列蓝牙模组�
 | SDK | 适用模组 / Modules | 通道 / Transport | 版本 / Version | 文档 / Docs |
 | --- | --- | --- | --- | --- |
 | [ota-bt976](ota-bt976/) | BT976 系列 | BLE | 1.0.3 | [中文](ota-bt976/README.md) · [English](ota-bt976/README.en.md) |
-| [ota-bt1026](ota-bt1026/) | BT1026 系列 | SPP | 1.0.0 | [中文](ota-bt1026/README.md) · [English](ota-bt1026/README.en.md) |
+| [ota-bt1026](ota-bt1026/) | BT1026 系列 | SPP | 1.0.1 | [中文](ota-bt1026/README.md) · [English](ota-bt1026/README.en.md) |
 | [ota-bt1035](ota-bt1035/) | BT1035 系列 | SPP + BLE | 1.0.0 | [中文](ota-bt1035/README.md) · [English](ota-bt1035/README.en.md) |
 | [ota-bt671](ota-bt671/) | BT671 / BT3721Vx 系列 | BLE | 1.0.0 | [中文](ota-bt671/README.md) · [English](ota-bt671/README.en.md) |
 | [ota-bt681](ota-bt681/) | BT681 系列 | BLE | 1.0.0 | [中文](ota-bt681/README.md) · [English](ota-bt681/README.en.md) |

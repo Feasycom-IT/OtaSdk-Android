@@ -2,7 +2,7 @@
 
 BT1026 系列模组的 UART DFU（VMU 协议）固件升级 SDK，通过 SPP 通道把固件分包写入设备。
 
-- 版本 / Version：**1.0.0**
+- 版本 / Version：**1.0.1**
 - 适用模组 / Modules：BT1026 系列
 - 通道 / Transport：SPP（经典蓝牙串口）
 - 最低系统 / minSdk：API 24（Android 7.0）
@@ -13,24 +13,28 @@ BT1026 系列模组的 UART DFU（VMU 协议）固件升级 SDK，通过 SPP 通
 ## 1. 特性
 
 - **VMU 协议升级**：SYNC → START → DATA → VALIDATION → COMMIT 全流程
-- **断线重连**：升级中设备重启后自动重连并续传
+- **连续发送**：按设备 DATA_BYTES_REQ 窗口连发，1.46 MB 固件约 3 分钟（旧版逐包等 ACK 约 12 分钟）
+- **ACK 背压**：设备停止应答时自动暂停发送，等设备恢复后再续传，避免把设备接收缓冲压死
+- **设备重启后自动收尾**：固件发完后设备重启断连，自动重连并完成提交/完成流程
 - **看门狗**：20 秒无响应自动判定失败，避免界面卡死
 - **进度/阶段回调**：`Stage` 常量可直接用于界面展示
 - **错误码**：`OtaError` 常量区分文件、连接、升级中等失败原因
 - **内置 ProGuard 规则**：公开 API 自动保留
 
+> **注意**：固件传输过程中若断链，SDK 会直接通过 `onFailure` 返回，不再自动从头发送（旧版会重发整个固件）。重试前建议让设备断电重启一次，否则设备可能停在升级错误态。
+
 ---
 
 ## 2. 集成方式
 
-1. 将 `aar/ota-bt1026-1.0.0.aar`、`fsc-core-0.0.0.6.aar`、`fsc-debug-utils-1.0.0.aar` 复制到 `libs/`；
+1. 将 `aar/ota-bt1026-1.0.1.aar`、`fsc-core-0.0.0.6.aar`、`fsc-debug-utils-1.0.0.aar` 复制到 `libs/`；
 2. 引入依赖：
 
 ```gradle
 dependencies {
     implementation files('libs/fsc-debug-utils-1.0.0.aar')
     implementation files('libs/fsc-core-0.0.0.6.aar')
-    implementation files('libs/ota-bt1026-1.0.0.aar')
+    implementation files('libs/ota-bt1026-1.0.1.aar')
 }
 ```
 
@@ -97,4 +101,5 @@ AAR 自带 `consumer-rules.pro`，开启 R8 时自动保留公开类与回调接
 
 | 版本 | 说明 |
 | --- | --- |
+| 1.0.1 | 连发提速：1.46 MB 固件由约 12 分钟降到约 3 分钟；新增 ACK 背压；传输中断链改为直接失败回调（不再自动重发）；失败时补发中止/断开指令，避免设备停在错误态 |
 | 1.0.0 | 首个独立发布版本 |
